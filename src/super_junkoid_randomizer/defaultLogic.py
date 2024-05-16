@@ -66,13 +66,13 @@ lowerIceCastle = LogicShortcut(lambda loadout: (
         )
 ))
 
-crocomire = LogicShortcut(lambda loadout: (
+penguinmire = LogicShortcut(lambda loadout: (
         (lowerIceCastle in loadout) and (canRatBurst in loadout) and (loadout.count(MagicBolt) >= 4) and
         (Baseball in loadout) and (IceGem in loadout)
 ))
 
 junkraid = LogicShortcut(lambda loadout: (
-        (crocomire in loadout) and (canRatDash in loadout) and (loadout.count(Heart) >= 4)
+        (penguinmire in loadout) and (canRatDash in loadout) and (loadout.count(Heart) >= 4)
 ))
 
 bloodBethel = LogicShortcut(lambda loadout: (
@@ -87,7 +87,7 @@ bloodBethel = LogicShortcut(lambda loadout: (
 botwoon = LogicShortcut(lambda loadout: (
         (bloodBethel in loadout) and (SanguineFin in loadout) and
         ((Wallkicks in loadout) or (MagicBroom in loadout)) and
-        (Baseball in loadout) and (loadout.count(Heart) >= 8)
+        (Baseball in loadout) and (loadout.count(Heart) >= 4)
 ))
 
 junkgon = LogicShortcut(lambda loadout: (
@@ -98,13 +98,13 @@ enterIdol = LogicShortcut(lambda loadout: (
         ((junkraid in loadout) or (junkgon in loadout)) and (Sparksuit in loadout) and (canRatBurst in loadout)
 ))
 
-sporeSpawn = LogicShortcut(lambda loadout: (
+idolHeart = LogicShortcut(lambda loadout: (
         (enterIdol in loadout) and
         ((Feather in loadout) or (Wallkicks in loadout) or (MagicBroom in loadout))
 ))
 
 junkoon = LogicShortcut(lambda loadout: (
-        (sporeSpawn in loadout) and (SanguineFin in loadout) and (RatDasher in loadout) and (Sparksuit in loadout)
+        (idolHeart in loadout) and (SanguineFin in loadout) and (RatDasher in loadout) and (Sparksuit in loadout)
         and (loadout.count(Heart) >= 8)
 ))
 
@@ -201,33 +201,33 @@ location_logic: LocationLogicType = {
             ((Feather in loadout) or (Wallkicks in loadout) or (MagicBroom in loadout))
     ),
     "Hidden Shaft Heart": lambda loadout: (
-            (sporeSpawn in loadout) and
+            (idolHeart in loadout) and
             ((RatDasher in loadout) or (Sparksuit in loadout)) and (Feather in loadout)
     ),
     "Lower Idol Ceiling Magic Bolt": lambda loadout: (
-            (sporeSpawn in loadout) and
+            (idolHeart in loadout) and
             (((Feather in loadout) and (Wallkicks in loadout)) or (MagicBroom in loadout))
     ),
     "Under Alter Magic Bolt": lambda loadout: (
-        (sporeSpawn in loadout)
+        (idolHeart in loadout)
     ),
     "First Sparksuit": lambda loadout: (
-            (sporeSpawn in loadout) and (Sparksuit in loadout)
+            (idolHeart in loadout) and (Sparksuit in loadout)
     ),
     "False Idol Baseball Alter": lambda loadout: (
-        (sporeSpawn in loadout)
+        (idolHeart in loadout)
     ),
     "Spike Spark Heart": lambda loadout: (
-            (sporeSpawn in loadout) and (SanguineFin in loadout) and (RatDasher in loadout) and (Sparksuit in loadout)
+            (idolHeart in loadout) and (SanguineFin in loadout) and (RatDasher in loadout) and (Sparksuit in loadout)
     ),
     "Junkoon Lucky Frog": lambda loadout: (
         (junkoon in loadout)
     ),
     "Purple Locket": lambda loadout: (
-            (sporeSpawn in loadout) and (SanguineFin in loadout) and (RatDasher in loadout) and (Sparksuit in loadout)
+            (idolHeart in loadout) and (SanguineFin in loadout) and (RatDasher in loadout) and (Sparksuit in loadout)
     ),
     "Upper Middle Idol Baseball": lambda loadout: (
-        (sporeSpawn in loadout)
+        (idolHeart in loadout)
     ),
     "Upper Deep Purple Baseball": lambda loadout: (  # Start of Deep Purple
             (deepPurple in loadout) and (canRatBurst in loadout) and (Sparksuit in loadout) and
@@ -342,7 +342,7 @@ location_logic: LocationLogicType = {
              (MagicBroom in loadout)) and (canRatDash in loadout)
     ),
     "Gem Of Ice": lambda loadout: (
-            (crocomire in loadout) and (IceGem in loadout)
+            (penguinmire in loadout) and (IceGem in loadout)
     ),
     "Dreamer's Crown": lambda loadout: (
             (lowerIceCastle in loadout) and (Baseball in loadout) and (Sparksuit in loadout) and
